@@ -262,5 +262,336 @@
     "banlist_info": {
       "ban_ocg": "Limited"
     }
+  },
+  "32548318": {
+    "id": 32548318,
+    "name": "Rahu Dracotail",
+    "type": "Spell Card",
+    "humanReadableCardType": "Normal Spell",
+    "frameType": "spell",
+    "desc": "Fusion Summon 1 \"Dracotail\" monster from your Extra Deck, using monsters from your hand, Deck, or field, also for the rest of this turn after this card resolves, you cannot Special Summon from the Extra Deck, except Fusion Monsters. You can only activate 1 \"Rahu Dracotail\" per turn.",
+    "race": "Normal",
+    "archetype": "Dracotail",
+    "ygoprodeck_url": "https://ygoprodeck.com/card/rahu-dracotail-14983"
+  },
+  "44362883": {
+    "id": 44362883,
+    "name": "Branded Fusion",
+    "type": "Spell Card",
+    "humanReadableCardType": "Normal Spell",
+    "frameType": "spell",
+    "desc": "Fusion Summon 1 Fusion Monster that mentions \"Fallen of Albaz\" as material from your Extra Deck, using 2 monsters from your hand, Deck, or field as material. You cannot Special Summon from the Extra Deck, except Fusion Monsters, the turn you activate this card. You can only activate 1 \"Branded Fusion\" per turn.",
+    "race": "Normal",
+    "archetype": "Branded",
+    "ygoprodeck_url": "https://ygoprodeck.com/card/branded-fusion-12939",
+    "banlist_info": {
+      "ban_tcg": "Semi-Limited",
+      "ban_ocg": "Limited"
+    }
+  },
+  "05431722": {
+    "id": 5431722,
+    "name": "Dracotail Flame",
+    "type": "Trap Card",
+    "humanReadableCardType": "Normal Trap",
+    "frameType": "trap",
+    "desc": "Target 1 face-up Spell on the field; negate its effects (until the end of this turn), then you can place 1 \"Dracotail\" card from your GY or banishment on the bottom of the Deck, except \"Dracotail Flame\", then draw 1 card. You can only activate 1 \"Dracotail Flame\" per turn.",
+    "race": "Normal",
+    "archetype": "Dracotail",
+    "ygoprodeck_url": "https://ygoprodeck.com/card/dracotail-flame-14985"
+  },
+  "69932023": {
+    "id": 69932023,
+    "name": "Dracotail Horn",
+    "type": "Trap Card",
+    "humanReadableCardType": "Normal Trap",
+    "frameType": "trap",
+    "desc": "Target 1 Attack Position monster on the field; return it to the hand/Extra Deck, then you can place 1 \"Dracotail\" card from your GY or banishment on the bottom of the Deck, except \"Dracotail Horn\", then draw 1 card. You can only activate 1 \"Dracotail Horn\" per turn.",
+    "race": "Normal",
+    "archetype": "Dracotail",
+    "ygoprodeck_url": "https://ygoprodeck.com/card/dracotail-horn-14970"
+  },
+  "80208225": {
+    "id": 80208225,
+    "name": "Dracotail Sting",
+    "type": "Trap Card",
+    "humanReadableCardType": "Normal Trap",
+    "frameType": "trap",
+    "desc": "Target 1 monster and/or 1 Spell/Trap in your opponent's GY; banish them, then you can place 1 \"Dracotail\" card from your GY or banishment on the bottom of your Deck, except \"Dracotail Sting\", then draw 1 card. You can only activate 1 \"Dracotail Sting\" per turn.",
+    "race": "Normal",
+    "archetype": "Dracotail",
+    "ygoprodeck_url": "https://ygoprodeck.com/card/dracotail-sting-15196"
+  },
+  "38811586": {
+    "id": 38811586,
+    "name": "Albion the Sanctifire Dragon",
+    "typeline": [
+      "Dragon",
+      "Fusion",
+      "Effect"
+    ],
+    "type": "Fusion Monster",
+    "humanReadableCardType": "Fusion Effect Monster",
+    "frameType": "fusion",
+    "desc": "\"Fallen of Albaz\" + 1 LIGHT Spellcaster monster\r\nCannot be used as Fusion Material. Your opponent cannot target this card with card effects. You can only use each of the following effects of \"Albion the Sanctifire Dragon\" once per turn. During your opponent's turn (Quick Effect): You can target 2 monsters in any GY(s); Special Summon both monsters, 1 to each field. If this card is in your GY: You can Tribute 4 monsters, the 2 in the Extra Monster Zones and the 2 in the central Main Monster Zones, and if you do, Special Summon this card.",
+    "race": "Dragon",
+    "atk": 3000,
+    "def": 2500,
+    "level": 8,
+    "attribute": "LIGHT",
+    "archetype": "Albaz Dragon",
+    "ygoprodeck_url": "https://ygoprodeck.com/card/albion-the-sanctifire-dragon-13689"
+  },
+  "33760966": {
+    "id": 33760966,
+    "name": "Dracotail Arthalion",
+    "typeline": [
+      "Dragon",
+      "Fusion",
+      "Effect"
+    ],
+    "type": "Fusion Monster",
+    "humanReadableCardType": "Fusion Effect Monster",
+    "frameType": "fusion",
+    "desc": "1 \"Dracotail\" monster + 1+ monsters in the hand\r\nIf this card is Fusion Summoned: You can target monsters on the field and/or GYs, up to the number of monsters used as material from the hand; return them to the hand. If 2 or more monsters are sent to the GY at the same time, while this card is in your GY (except during the Damage Step): You can Special Summon this card, but banish it when it leaves the field. You can only use each effect of \"Dracotail Arthalion\" once per turn.",
+    "race": "Dragon",
+    "atk": 3000,
+    "def": 2500,
+    "level": 8,
+    "attribute": "EARTH",
+    "archetype": "Dracotail",
+    "ygoprodeck_url": "https://ygoprodeck.com/card/dracotail-arthalion-14984"
+  },
+  "70538272": {
+    "id": 70538272,
+    "name": "Filia Regis",
+    "typeline": [
+      "Dragon",
+      "Fusion",
+      "Effect"
+    ],
+    "type": "Fusion Monster",
+    "humanReadableCardType": "Fusion Effect Monster",
+    "frameType": "fusion",
+    "desc": "1 Dragon Fusion Monster + 1 Level 7 or higher Dragon monster\r\nDuring the Main Phase (Quick Effect): You can target 1 card your opponent controls or in their GY; banish it, then if you banished a card on the field, return 1 Dragon monster you control to the hand. At the start of your opponent's Battle Phase, if this card is in your GY: You can return 1 Dragon monster you control to the hand or Extra Deck, and if you do, Special Summon this card. You can only use each effect of \"Filia Regis\" once per turn.",
+    "race": "Dragon",
+    "atk": 3000,
+    "def": 2500,
+    "level": 8,
+    "attribute": "DARK",
+    "ygoprodeck_url": "https://ygoprodeck.com/card/filia-regis-14942"
+  },
+  "89851827": {
+    "id": 89851827,
+    "name": "Secreterion Dragon",
+    "typeline": [
+      "Dragon",
+      "Fusion",
+      "Effect"
+    ],
+    "type": "Fusion Monster",
+    "humanReadableCardType": "Fusion Effect Monster",
+    "frameType": "fusion",
+    "desc": "1 Dragon monster + 1 Spellcaster monster\r\nThis card loses 100 ATK for each of your banished cards. While you control this Fusion Summoned card, your opponent cannot activate the effects of Special Summoned Dragon or Spellcaster monsters they control. You can target 1 Dragon and 1 Spellcaster monster in your GY; Special Summon 1, and if you do, place the other on the bottom of the Deck. You can only use this effect of \"Secreterion Dragon\" once per turn.",
+    "race": "Dragon",
+    "atk": 3000,
+    "def": 1500,
+    "level": 8,
+    "attribute": "LIGHT",
+    "ygoprodeck_url": "https://ygoprodeck.com/card/secreterion-dragon-15060"
+  },
+  "44146295": {
+    "id": 44146295,
+    "name": "Mirrorjade the Iceblade Dragon",
+    "typeline": [
+      "Wyrm",
+      "Fusion",
+      "Effect"
+    ],
+    "type": "Fusion Monster",
+    "humanReadableCardType": "Fusion Effect Monster",
+    "frameType": "fusion",
+    "desc": "\"Fallen of Albaz\" + 1 Fusion, Synchro, Xyz, or Link Monster\r\nYou can only control 1 \"Mirrorjade the Iceblade Dragon\". Once per turn (Quick Effect): You can send 1 Fusion Monster from your Extra Deck to the GY that mentions \"Fallen of Albaz\" as material; banish 1 monster on the field, also this card cannot use this effect next turn. If this Fusion Summoned card in its owner's control leaves the field because of an opponent's card: You can destroy all monsters your opponent controls during the End Phase of this turn.",
+    "race": "Wyrm",
+    "atk": 3000,
+    "def": 2500,
+    "level": 8,
+    "attribute": "DARK",
+    "archetype": "Albaz Dragon",
+    "ygoprodeck_url": "https://ygoprodeck.com/card/mirrorjade-the-iceblade-dragon-12914"
+  },
+  "87746184": {
+    "id": 87746184,
+    "name": "Albion the Branded Dragon",
+    "typeline": [
+      "Dragon",
+      "Fusion",
+      "Effect"
+    ],
+    "type": "Fusion Monster",
+    "humanReadableCardType": "Fusion Effect Monster",
+    "frameType": "fusion",
+    "desc": "\"Fallen of Albaz\" + 1 LIGHT monster\r\nIf this card is Fusion Summoned: You can Fusion Summon 1 Level 8 or lower Fusion Monster from your Extra Deck, except \"Albion the Branded Dragon\", by banishing Fusion Materials mentioned on it from your hand, field, and/or GY. During the End Phase, if this card is in the GY because it was sent there this turn: You can add to your hand or Set 1 \"Branded\" Spell/Trap directly from your Deck. You can only use each effect of \"Albion the Branded Dragon\" once per turn.",
+    "race": "Dragon",
+    "atk": 2500,
+    "def": 2000,
+    "level": 8,
+    "attribute": "DARK",
+    "archetype": "Branded",
+    "ygoprodeck_url": "https://ygoprodeck.com/card/albion-the-branded-dragon-11852"
+  },
+  "70534340": {
+    "id": 70534340,
+    "name": "Lubellion the Searing Dragon",
+    "typeline": [
+      "Dragon",
+      "Fusion",
+      "Effect"
+    ],
+    "type": "Fusion Monster",
+    "humanReadableCardType": "Fusion Effect Monster",
+    "frameType": "fusion",
+    "desc": "1 DARK monster + \"Fallen of Albaz\"\r\nIf this card is Fusion Summoned: You can discard 1 card; Fusion Summon 1 Level 8 or lower Fusion Monster from your Extra Deck, except \"Lubellion the Searing Dragon\", by shuffling Fusion Materials mentioned on it into the Deck, from your monsters on the field, GY, and/or face-up banished cards. For the rest of this turn, this card cannot attack, also you cannot Special Summon from the Extra Deck, except Fusion Monsters. You can only use this effect of \"Lubellion the Searing Dragon\" once per turn.",
+    "race": "Dragon",
+    "atk": 2500,
+    "def": 3000,
+    "level": 8,
+    "attribute": "LIGHT",
+    "archetype": "Albaz Dragon",
+    "ygoprodeck_url": "https://ygoprodeck.com/card/lubellion-the-searing-dragon-12915"
+  },
+  "01906812": {
+    "id": 1906812,
+    "name": "Sprind the Irondash Dragon",
+    "typeline": [
+      "Machine",
+      "Fusion",
+      "Effect"
+    ],
+    "type": "Fusion Monster",
+    "humanReadableCardType": "Fusion Effect Monster",
+    "frameType": "fusion",
+    "desc": "\"Fallen of Albaz\" + 1 Effect Monster Special Summoned this turn\r\nDuring your Main Phase: You can move this card you control to another of your Main Monster Zones, then you can destroy all other face-up cards in this card's column. During the End Phase, if this card is in the GY because it was sent there this turn: You can add to your hand, or Special Summon, 1 \"Springans\" monster or 1 \"Fallen of Albaz\" from your Deck. You can only use each effect of \"Sprind the Irondash Dragon\" once per turn.",
+    "race": "Machine",
+    "atk": 2500,
+    "def": 2000,
+    "level": 8,
+    "attribute": "DARK",
+    "ygoprodeck_url": "https://ygoprodeck.com/card/sprind-the-irondash-dragon-11557"
+  },
+  "41373230": {
+    "id": 41373230,
+    "name": "Titaniklad the Ash Dragon",
+    "typeline": [
+      "Dragon",
+      "Fusion",
+      "Effect"
+    ],
+    "type": "Fusion Monster",
+    "humanReadableCardType": "Fusion Effect Monster",
+    "frameType": "fusion",
+    "desc": "\"Fallen of Albaz\" + 1 monster with 2500 or more ATK\r\nGains ATK equal to the combined original Levels of the monsters used for its Fusion Summon x 100. After this card is Fusion Summoned, for the rest of this turn, it is unaffected by the activated effects of any other monsters Special Summoned from the Extra Deck. During the End Phase, if this card is in the GY because it was sent there this turn: You can add to your hand, or Special Summon, 1 \"Fallen of Albaz\" or \"Dogmatika\" monster from your Deck. You can only use this effect of \"Titaniklad the Ash Dragon\" once per turn.",
+    "race": "Dragon",
+    "atk": 2500,
+    "def": 2500,
+    "level": 8,
+    "attribute": "DARK",
+    "ygoprodeck_url": "https://ygoprodeck.com/card/titaniklad-the-ash-dragon-11102"
+  },
+  "79755671": {
+    "id": 79755671,
+    "name": "Dracotail Gulamel",
+    "typeline": [
+      "Spellcaster",
+      "Fusion",
+      "Effect"
+    ],
+    "type": "Fusion Monster",
+    "humanReadableCardType": "Fusion Effect Monster",
+    "frameType": "fusion",
+    "desc": "1 \"Dracotail\" monster + 1 monster in the hand\r\nWhen you activate a \"Dracotail\" card or effect (Quick Effect): You can target 1 card your opponent controls; destroy it. If 2 or more monsters are sent to the GY at the same time, while this card is in your GY (except during the Damage Step): You can Special Summon this card, but banish it when it leaves the field. You can only use each effect of \"Dracotail Gulamel\" once per turn.",
+    "race": "Spellcaster",
+    "atk": 2800,
+    "def": 2300,
+    "level": 7,
+    "attribute": "WATER",
+    "archetype": "Dracotail",
+    "ygoprodeck_url": "https://ygoprodeck.com/card/dracotail-gulamel-14969"
+  },
+  "29301450": {
+    "id": 29301450,
+    "name": "S:P Little Knight",
+    "typeline": [
+      "Warrior",
+      "Link",
+      "Effect"
+    ],
+    "type": "Link Monster",
+    "humanReadableCardType": "Link Effect Monster",
+    "frameType": "link",
+    "desc": "2 Effect Monsters\r\nIf this card is Link Summoned using a Fusion, Synchro, Xyz, or Link Monster as material: You can target 1 card on the field or in either GY; banish it, also your monsters cannot attack directly this turn. When your opponent activates a card or effect (Quick Effect): You can target 2 face-up monsters on the field, including a monster you control; banish both until the End Phase. You can only use each effect of \"S:P Little Knight\" once per turn.",
+    "race": "Warrior",
+    "atk": 1600,
+    "def": null,
+    "level": null,
+    "attribute": "DARK",
+    "linkval": 2,
+    "linkmarkers": [
+      "Left",
+      "Right"
+    ],
+    "ygoprodeck_url": "https://ygoprodeck.com/card/s-p-little-knight-14075",
+    "banlist_info": {
+      "ban_ocg": "Limited"
+    }
+  },
+  "24361622": {
+    "id": 24361622,
+    "name": "Hieratic Seal of the Heavenly Spheres",
+    "typeline": [
+      "Dragon",
+      "Link",
+      "Effect"
+    ],
+    "type": "Link Monster",
+    "humanReadableCardType": "Link Effect Monster",
+    "frameType": "link",
+    "desc": "2 Dragon monsters\r\nOnce per opponent's turn, if this card is in the Extra Monster Zone (Quick Effect): You can Tribute 1 monster from your hand or field; return 1 face-up card on the field to the hand. If this card is Tributed: Special Summon 1 Dragon monster from your hand or Deck, but make its ATK/DEF 0. You can only use this effect of \"Hieratic Seal of the Heavenly Spheres\" once per turn.",
+    "race": "Dragon",
+    "atk": 0,
+    "def": null,
+    "level": 0,
+    "attribute": "LIGHT",
+    "archetype": "Hieratic",
+    "linkval": 2,
+    "linkmarkers": [
+      "Bottom-Left",
+      "Bottom-Right"
+    ],
+    "ygoprodeck_url": "https://ygoprodeck.com/card/hieratic-seal-of-the-heavenly-spheres-9058"
+  },
+  "42097666": {
+    "id": 42097666,
+    "name": "Spirit with Eyes of Blue",
+    "typeline": [
+      "Dragon",
+      "Link",
+      "Effect"
+    ],
+    "type": "Link Monster",
+    "humanReadableCardType": "Link Effect Monster",
+    "frameType": "link",
+    "desc": "1 Level 4 or lower Dragon or Spellcaster monster\r\nYou cannot Special Summon, except Dragon monsters. You can only use each of the following effects of \"Spirit with Eyes of Blue\" once per turn. If this card is Link Summoned: You can take 1 \"Mausoleum of White\" from your Deck and either add it to your hand or send it to the GY. You can Tribute this card; Special Summon 1 \"Blue-Eyes\" monster from your hand or GY, but if you Special Summoned an Effect Monster from your GY by this effect, it cannot attack and its effects are negated.",
+    "race": "Dragon",
+    "atk": 300,
+    "def": null,
+    "level": null,
+    "attribute": "LIGHT",
+    "archetype": "with Eyes of Blue",
+    "linkval": 1,
+    "linkmarkers": [
+      "Bottom-Left"
+    ],
+    "ygoprodeck_url": "https://ygoprodeck.com/card/spirit-with-eyes-of-blue-14673"
   }
 }

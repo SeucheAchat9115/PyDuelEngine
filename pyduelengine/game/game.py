@@ -45,7 +45,7 @@ class Game():
 
         print("Game started!")
         print(f"Current Phase: {self.gamestate.current_phase.name}")
-        print(f"Current Player: {self.current_player.name}")
+        print(f"Current Player: {self.gamestate.current_player}")
         print(f"Current Turn: {self.gamestate.current_turn}")
 
         while not self.check_win_condition():
@@ -63,7 +63,7 @@ class Game():
     
     def execute_phase(self) -> None:
         """Executes the logic for the current phase."""
-        print(f"Executing {self.gamestate.current_phase.name} phase for {self.gamestate.current_player.name}.")
+        print(f"Executing {self.gamestate.current_phase.name} phase for {self.gamestate.current_player}.")
         
         # Turn player and non-turn player actions
         while self.one_players_has_actions():
@@ -76,7 +76,7 @@ class Game():
         Returns:
             bool: True if either player has actions left, False otherwise.
         """
-        
-        current_player_has_actions = self.current_player.has_actions(self.state)
-        non_current_player_has_actions = self.non_current_player.has_actions(self.state)
+
+        current_player_has_actions = self.current_player.has_actions(self.gamestate)
+        non_current_player_has_actions = self.non_current_player.has_actions(self.gamestate)
         return current_player_has_actions or non_current_player_has_actions

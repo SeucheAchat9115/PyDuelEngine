@@ -22,11 +22,10 @@ class PhaseManager:
         if self.game_state.current_phase == GamePhase.END:
             self.game_state.current_phase = GamePhase.DRAW
             self.game_state.current_turn += 1
-            self.game_state.current_player = (
-                self.game_state.player_1 
-                if self.game_state.current_player == self.game_state.player_2 
-                else self.game_state.player_2
-            )
+            if self.game_state.current_player == self.game_state.player_2_state.name:
+                self.game_state.current_player = self.game_state.player_1_state.name
+            else:
+                self.game_state.current_player = self.game_state.player_2_state.name
         else:
             self.game_state.current_phase = GamePhase(self.game_state.current_phase.value + 1)
         print(f"New phase: {self.game_state.current_phase.name}")
