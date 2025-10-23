@@ -1,14 +1,27 @@
-from pyduelengine.player.playerstate import PlayerState
+from pyduelengine.game.phases import GamePhase
+from pyduelengine.player.player import Player
 
 class GameState:
     """
     Holds the complete gamestate, including both players and shared zones.
     """
-    def __init__(self) -> None:
-        """Initializes a new GameState with two players and default values."""
-        self.player1 = PlayerState(name="Player 1")
-        self.player2 = PlayerState(name="Player 2")
+    def __init__(
+        self,
+        player_1: Player,
+        player_2: Player,
+    ) -> None:
+        """Initializes the GameState with two players.
 
-        self.turn_number = 1
-        self.current_player = self.player1
-        self.current_phase = "Draw"
+        Args:
+            player_1 (Player): The first player.
+            player_2 (Player): The second player.
+        """
+
+        self.player_1 = player_1
+        self.player_2 = player_2
+
+        # Initialize the game phase and current player
+        self.current_phase = GamePhase.DRAW
+        self.current_player = self.player_1
+        self.non_current_player = self.player_2
+        self.current_turn = 1
