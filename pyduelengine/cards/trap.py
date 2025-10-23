@@ -1,4 +1,4 @@
-from pyduelengine.cards.types.card import Card
+from pyduelengine.cards.card import Card
 
 class TrapCard(Card):
     """Represents a Trap Card in the game."""

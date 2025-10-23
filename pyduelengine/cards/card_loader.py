@@ -1,5 +1,5 @@
 from pyduelengine.cards.registry import CARD_REGISTRY
-from pyduelengine.cards.types.card import Card
+from pyduelengine.cards.card import Card
 
 class CardLoader():
     """Base class for all cards in the game."""

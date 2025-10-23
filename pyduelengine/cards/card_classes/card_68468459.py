@@ -1,7 +1,7 @@
-from pyduelengine.cards.types.monster import MonsterCard
+from pyduelengine.cards.monster import MonsterCard
 
 class Card68468459(MonsterCard):
     """
-    A class representing the card with ID 68468459.
+    A class representing the card "Fallen of Albaz".
     """
     pass

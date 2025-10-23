@@ -1,5 +1,5 @@
 from pyduelengine.api.ydk_manager import YDKDeckManager
-from pyduelengine.cards.types.card import Card
+from pyduelengine.cards.card import Card
 from pyduelengine.cards.card_loader import CardLoader
 
 def load_deck_from_file(deck_list: str, deck_type: str) -> list:

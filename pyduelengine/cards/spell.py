@@ -1,4 +1,4 @@
-from pyduelengine.cards.types.card import Card
+from pyduelengine.cards.card import Card
 
 class SpellCard(Card):
     """Represents a Spell Card in the game."""
