@@ -67,8 +67,8 @@ class Game():
         
         # Turn player and non-turn player actions
         while self.one_players_has_actions():
-            self.current_player.get_action(self.gamestate)
-            self.non_current_player.get_action(self.gamestate)
+            self.current_player.apply_actions(self.gamestate)
+            self.non_current_player.apply_actions(self.gamestate)
 
     def one_players_has_actions(self) -> bool:
         """Placeholder function to determine if either player has actions left.

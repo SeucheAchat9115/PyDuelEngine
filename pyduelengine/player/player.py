@@ -23,7 +23,7 @@ class Player():
         self.name = name
         self.action_handler = ActionHandler()
 
-    def get_action(
+    def apply_actions(
         self, 
         game_state: "GameState"
     ) -> None:

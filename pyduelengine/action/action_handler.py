@@ -1,4 +1,5 @@
 from typing import TYPE_CHECKING
+from pyduelengine.constants import LOCATIONS
 
 if TYPE_CHECKING:
     from pyduelengine.player.player import Player
@@ -24,5 +25,15 @@ class ActionHandler:
         Returns:
             list[str]: A list of possible actions.
         """
-        # Placeholder logic for determining possible actions
-        return []
+        possible_actions = []
+
+        for location in LOCATIONS:
+            if location in ["deck", "extra_deck"]:
+                # Effects here cannot be activated directly by the player
+                continue  
+
+            cards_in_location = game_state.get_cards_by_location(player.name, location)
+            for card in cards_in_location:
+                actions = card.get_possible_actions(player, game_state)
+                possible_actions.extend(actions)
+        return possible_actions
