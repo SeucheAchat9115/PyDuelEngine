@@ -2,7 +2,7 @@ from pyduelengine.cards.card import Card
 
 class MonsterCard(Card):
     """A class representing a monster card in the game."""
-    def __init__(self, card_id: str, attack: int, defense: int, level: int) -> None:
+    def __init__(self, **kwargs) -> None:
         """Initializes a MonsterCard object.
 
         Args:
@@ -11,10 +11,12 @@ class MonsterCard(Card):
             defense (int): The defense points of the monster.
             level (int): The level of the monster.
         """
-        super().__init__(card_id)
-        self.attack = attack
-        self.defense = defense
-        self.level = level
+        super().__init__(**kwargs)
+        self.attack = kwargs.get("attack", None)
+        self.defense = kwargs.get("defense", None)
+        self.level = kwargs.get("level", None)
+        self.race = kwargs.get("race", None)
+        self.attribute = kwargs.get("attribute", None)
 
     def can_be_normal_summoned(self) -> bool:
         """Determines if the monster can be normal summoned.

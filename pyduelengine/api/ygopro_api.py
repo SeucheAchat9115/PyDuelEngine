@@ -54,6 +54,16 @@ class YGOPROAPIClient():
 
         return cards_data
 
+    def get_card_by_id(self, card_id: str) -> dict:
+        """Fetch a single card information by its ID from the YGOPRO API.
+        Args:
+            card_id (str): The ID of the card to fetch.
+        Returns:
+            dict: The card information.
+        """
+        cards_data = self.get_cards_by_ids([card_id])
+        return cards_data[0] if cards_data else {}
+
     def enrich_deck_with_card_info(self, deck_data: dict) -> dict:
         """Enrich the deck data with card information from the YGOPRO API.
         Args:
