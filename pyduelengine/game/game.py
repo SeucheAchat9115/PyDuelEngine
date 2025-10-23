@@ -1,6 +1,7 @@
 from pyduelengine.game.gamestate import GameState
 from pyduelengine.player.player import Player
-from pyduelengine.game.phases import GamePhase
+from pyduelengine.phase.phase_manager import PhaseManager
+from pyduelengine.chain.chain_manager import ChainManager
 
 class Game():
     """Main class representing the game."""
@@ -30,6 +31,11 @@ class Game():
             player_2=player_2
         )
 
+        # Initialize PhaseManager to handle phase transitions
+        self.phase_manager = PhaseManager(game_state=self.state)
+        # Initialize ChainManager to handle chain resolutions
+        self.chain_manager = ChainManager()
+
     def start(self) -> None:
         """Starts the game."""
 
@@ -40,7 +46,7 @@ class Game():
 
         while not self.check_win_condition():
             self.execute_phase()
-            self.advance_phase()
+            self.phase_manager.advance_phase()
 
     def check_win_condition(self) -> bool:
         """Checks if a win condition has been met.
@@ -66,18 +72,7 @@ class Game():
         Returns:
             bool: True if either player has actions left, False otherwise.
         """
-        # Placeholder logic; in a real implementation, this would check actual game state
-        return False
-
-    def advance_phase(self) -> None:
-        """Advances to the next phase or turn."""
-        if self.state.current_phase == GamePhase.END:
-            self.state.current_turn += 1
-            self.state.current_phase = GamePhase.DRAW
-            self.state.current_player = (
-                self.state.player_1 
-                if self.state.current_player == self.state.player_2 
-                else self.state.player_2
-            )
-        else:
-            self.state.current_phase = GamePhase(self.state.current_phase.value + 1)
+        
+        player_1_has_actions = self.state.player_1.has_actions(self.state)
+        player_2_has_actions = self.state.player_2.has_actions(self.state)
+        return player_1_has_actions or player_2_has_actions

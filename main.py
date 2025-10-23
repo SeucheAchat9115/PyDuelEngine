@@ -1,5 +1,4 @@
 from pyduelengine.game.game import Game
-from pyduelengine.player.playerstate import Player
 
 if __name__ == "__main__":
     

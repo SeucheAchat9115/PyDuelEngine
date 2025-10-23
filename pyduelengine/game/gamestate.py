@@ -1,4 +1,4 @@
-from pyduelengine.game.phases import GamePhase
+from pyduelengine.phase.phases import GamePhase
 from pyduelengine.player.player import Player
 
 class GameState:

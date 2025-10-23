@@ -1,12 +1,12 @@
 from enum import Enum
 
 class GamePhase(Enum):
-    DRAW = "Draw"
-    STANDBY = "Standby"
-    MAIN1 = "Main1"
-    BATTLE = "Battle"
-    MAIN2 = "Main2"
-    END = "End"
+    DRAW = 1
+    STANDBY = 2
+    MAIN1 = 3
+    BATTLE = 4
+    MAIN2 = 5
+    END = 6
 
 PHASE_ORDER = [
     GamePhase.DRAW,
