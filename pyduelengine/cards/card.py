@@ -12,3 +12,4 @@ class Card():
         self.name = kwargs.get("name", None)
         self.description = kwargs.get("desc", None)
         self.type = kwargs.get("type", None)
+        self.archetype = kwargs.get("archetype", None)
