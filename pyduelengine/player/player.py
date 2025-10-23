@@ -13,23 +13,17 @@ class Player():
     def __init__(
         self, 
         name: str,
-        deck_list: str
     ) -> None:
         """Initializes a Player object.
         
         Args:
             name (str): The name of the player.
-            deck_list (str): The deck list of the player.
         """
 
         self.name = name
-        self.playerstate = PlayerState(
-            name=name,
-            deck_list=deck_list
-        )
         self.action_handler = ActionHandler()
 
-    def take_action(
+    def get_action(
         self, 
         game_state: "GameState"
     ) -> None:

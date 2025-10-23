@@ -22,17 +22,21 @@ class Game():
         """
 
         # Initialize Players who can take actions
-        player_1 = Player(name=player_1_name, deck_list=player_1_deck_list)
-        player_2 = Player(name=player_2_name, deck_list=player_2_deck_list)
+        self.player_1 = Player(name=player_1_name)
+        self.player_2 = Player(name=player_2_name)
+        self.current_player = self.player_1
+        self.non_current_player = self.player_2
 
         # Initialize GameState to track the state of the game
-        self.state = GameState(
-            player_1=player_1,
-            player_2=player_2
+        self.gamestate = GameState(
+            player_1_name=player_1_name,
+            player_1_deck_list=player_1_deck_list,
+            player_2_name=player_2_name,
+            player_2_deck_list=player_2_deck_list
         )
 
         # Initialize PhaseManager to handle phase transitions
-        self.phase_manager = PhaseManager(game_state=self.state)
+        self.phase_manager = PhaseManager(game_state=self.gamestate)
         # Initialize ChainManager to handle chain resolutions
         self.chain_manager = ChainManager()
 
@@ -40,9 +44,9 @@ class Game():
         """Starts the game."""
 
         print("Game started!")
-        print(f"Current Phase: {self.state.current_phase.name}")
-        print(f"Current Player: {self.state.current_player.name}")
-        print(f"Current Turn: {self.state.current_turn}")
+        print(f"Current Phase: {self.gamestate.current_phase.name}")
+        print(f"Current Player: {self.current_player.name}")
+        print(f"Current Turn: {self.gamestate.current_turn}")
 
         while not self.check_win_condition():
             self.execute_phase()
@@ -59,12 +63,12 @@ class Game():
     
     def execute_phase(self) -> None:
         """Executes the logic for the current phase."""
-        print(f"Executing {self.state.current_phase.name} phase for {self.state.current_player.name}.")
+        print(f"Executing {self.gamestate.current_phase.name} phase for {self.gamestate.current_player.name}.")
         
         # Turn player and non-turn player actions
         while self.one_players_has_actions():
-            self.state.current_player.take_action(self.state)
-            self.state.non_current_player.take_action(self.state)
+            self.current_player.get_action(self.gamestate)
+            self.non_current_player.get_action(self.gamestate)
 
     def one_players_has_actions(self) -> bool:
         """Placeholder function to determine if either player has actions left.
@@ -73,6 +77,6 @@ class Game():
             bool: True if either player has actions left, False otherwise.
         """
         
-        player_1_has_actions = self.state.player_1.has_actions(self.state)
-        player_2_has_actions = self.state.player_2.has_actions(self.state)
-        return player_1_has_actions or player_2_has_actions
+        current_player_has_actions = self.current_player.has_actions(self.state)
+        non_current_player_has_actions = self.non_current_player.has_actions(self.state)
+        return current_player_has_actions or non_current_player_has_actions
