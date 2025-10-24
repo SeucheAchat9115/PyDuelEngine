@@ -1,7 +1,9 @@
 from pyduelengine.game.gamestate import GameState
 from pyduelengine.player.player import Player
 from pyduelengine.phase.phase_manager import PhaseManager
-from pyduelengine.chain.chain_manager import ChainManager
+from pyduelengine.game.chain_manager import ChainManager
+from pyduelengine.game.battle_manager import BattleManager
+from pyduelengine.game.action_handler import ActionHandler
 
 class Game():
     """Main class representing the game."""
@@ -39,6 +41,10 @@ class Game():
         self.phase_manager = PhaseManager(game_state=self.gamestate)
         # Initialize ChainManager to handle chain resolutions
         self.chain_manager = ChainManager()
+        # Initialize BattleManager to handle battles
+        self.battle_manager = BattleManager()
+        # Initialize ActionHandler to process player actions
+        self.action_handler = ActionHandler()
 
     def start(self) -> None:
         """Starts the game."""
