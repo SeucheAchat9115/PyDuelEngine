@@ -1,28 +1,27 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
 
+if TYPE_CHECKING:
+    from pyduelengine.player.player import Player
+    from pyduelengine.game.chain_manager import Context
 
 class Action():
     """Base class for all actions in the game."""
-    def __init__(self) -> None:
+    def __init__(self, owner: Player) -> None:
         """Initializes an Action object.
+
+        Args:
+            owner (Player): The player who owns this action.
         """
-        pass
+        self.owner = owner
+
     def execute(
         self,
-        gamestate,
-        player,
-        chain_manager,
-        battle_manager,
-        summon_manager,
-        phase_manager
+        context: Context
     ) -> None:
         """Executes the action, modifying the game state as necessary.
         
         Args:
-            gamestate (GameState): The current game state.
-            player (Player): The player performing the action.
-            chain_manager (ChainManager): The chain manager for handling chains.
-            battle_manager (BattleManager): The battle manager for handling battles.
-            summon_manager (SummonManager): The summon manager for handling summons.
-            phase_manager (PhaseManager): The phase manager for handling phases.
+            context (Context): The context in which the action is being executed.
         """
         raise NotImplementedError("Execute method must be implemented by subclasses.")

@@ -36,11 +36,19 @@ class Game():
             player_2_deck_list=player_2_deck_list
         )
 
-        self.chain_manager = ChainManager(gamestate=self.gamestate)
+        self.action_generator = ActionGenerator(
+            gamestate=self.gamestate,
+        )
+
         self.summon_manager = SummonManager()
         self.battle_manager = BattleManager()
-
         self.phase_manager = PhaseManager(gamestate=self.gamestate)
+
+        self.chain_manager = ChainManager(
+            gamestate=self.gamestate,
+            action_generator=self.action_generator,
+            phase_manager=self.phase_manager
+        )
 
         self.action_handler = ActionHandler(
             gamestate=self.gamestate,
@@ -49,9 +57,7 @@ class Game():
             summon_manager=self.summon_manager,
             phase_manager=self.phase_manager
         )
-        self.action_generator = ActionGenerator(
-            gamestate=self.gamestate,
-        )
+        
 
     def start(self) -> None:
         """Starts the game."""

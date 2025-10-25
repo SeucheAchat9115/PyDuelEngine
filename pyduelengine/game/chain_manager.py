@@ -9,7 +9,8 @@ if TYPE_CHECKING:
     from pyduelengine.action.activate_effect import ActivateEffectAction
     from pyduelengine.game.gamestate import GameState
     from pyduelengine.game.action_generator import ActionGenerator
-from pyduelengine.effect.effect import Effect
+from pyduelengine.phase.phase_manager import PhaseManager
+from pyduelengine.action.action import Action
 
 @dataclass
 class Context:
@@ -20,15 +21,16 @@ class Context:
     gamestate: GameState
     activating_player: Player
     chain_manager: ChainManager
+    phase_manager: PhaseManager
     chain_link_number: int
     is_negated: bool = False
 
 @dataclass
 class ChainLink:
     """
-    A single link on the chain. It binds an Effect to its specific Context.
+    A single link on the chain. It binds an Action to its specific Context.
     """
-    effect: Effect
+    action: Action
     context: Context
 
 class ChainManager():
@@ -36,15 +38,18 @@ class ChainManager():
     def __init__(
         self, 
         gamestate: GameState,
-        action_generator: ActionGenerator
+        action_generator: ActionGenerator,
+        phase_manager: PhaseManager
     ) -> None:
         """Initializes a ChainManager object.
         Args:
             gamestate (GameState): The current game state.
             action_generator (ActionGenerator): The action generator for generating legal actions.
+            phase_manager (PhaseManager): The phase manager for managing game phases.
         """
         self.gamestate = gamestate
         self.action_generator = action_generator
+        self.phase_manager = phase_manager
         self.chain_stack: list[ChainLink] = []
 
         # A dictionary to track who has passed priority.
@@ -61,24 +66,24 @@ class ChainManager():
     def start_chain(
         self,
         player: Player,
-        effect: Effect,
+        action: Action,
     ) -> None:
         """Starts a new chain with the given effect activated by the player.
 
         Args:
-            player (Player): The player activating the effect.
-            effect (Effect): The effect being activated.
+            player (Player): The player activating the action.
+            action (Action): The action being activated.
         """
 
         # 1. Clear any old data
         self.chain_stack = []
         self._player_passed = {
-            self.gamestate.player1: False,
-            self.gamestate.player2: False
+            self.gamestate.player_1: False,
+            self.gamestate.player_2: False
         }
 
         # 2. Add Chain Link 1
-        self._add_to_chain(player, effect)
+        self._add_to_chain(player, action)
 
         # 3. Start the "reaction loop" by passing priority to the opponent
         opponent = self.gamestate.get_opponent(player)
@@ -149,18 +154,18 @@ class ChainManager():
     def _add_to_chain(
         self,
         player: Player,
-        effect: Effect
+        action: Action
     ) -> None:
         """Adds a new link to the chain."""
 
-        new_context = Context(
-            game_state=self.gamestate,
+        context = Context(
+            gamestate=self.gamestate,
             activating_player=player,
             chain_manager=self,
+            phase_manager=self.phase_manager,
             chain_link_number=len(self.chain_stack) + 1
         )
-        new_chain_link = ChainLink(effect=effect, context=new_context)
-        self.chain_stack.append(new_chain_link)
+        self.chain_stack.append(ChainLink(action=action, context=context))
 
     def _resolve_chain(self):
         """
@@ -172,10 +177,10 @@ class ChainManager():
         while self.chain_stack:
             # 1. Get the last link added to the stack
             link_to_resolve = self.chain_stack.pop()
-            effect = link_to_resolve.effect
+            action = link_to_resolve.action
             context = link_to_resolve.context
-            
-            print(f"Resolving Chain Link {context.chain_link_number}] '{effect.owner.name}'")
-            
+
+            print(f"Resolving Chain Link {context.chain_link_number} of '{action.owner.name}'")
+
             # 2. Call the card's actual logic. (context.is_negated flag checked internally.)
-            effect.on_activate(context)
+            action.execute(context)

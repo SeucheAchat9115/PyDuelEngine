@@ -6,6 +6,7 @@ if TYPE_CHECKING:
     from pyduelengine.player.player import Player
     from pyduelengine.action.action import Action
     
+from pyduelengine.action.pass_priority import PassPriorityAction
 from pyduelengine.action.phase_progress import ProgressPhaseAction
 
 class ActionGenerator:
@@ -23,9 +24,19 @@ class ActionGenerator:
         """Generates a list of legal actions for the given player."""
         legal_actions = []
         # Always add the option to progress to the next phase
-        legal_actions.append(ProgressPhaseAction())
+        legal_actions.append(ProgressPhaseAction(owner=player))
         return legal_actions
-    
+
+    def get_chain_responses(
+        self,
+        player: Player
+    ) -> list[Action]:
+        """Generates a list of legal chain responses for the given player."""
+        legal_actions = []
+        # Always add the option to pass priority
+        legal_actions.append(PassPriorityAction(owner=player))
+        return legal_actions
+
     def process_action(
         self,
         player: Player,

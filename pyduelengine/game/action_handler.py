@@ -42,4 +42,4 @@ class ActionHandler:
         action: Action
     ) -> None:
         """Processes the given action for the player."""
-        self.chain_manager.start_chain(player, action, 0)
+        self.chain_manager.start_chain(player, action)
