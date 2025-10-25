@@ -1,3 +1,11 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from pyduelengine.action.action import Action
+    from pyduelengine.game.gamestate import GameState
+    from pyduelengine.player.player import Player
+
 class Card():
     """Base class for all cards in the game."""
     def __init__(self, **kwargs) -> None:
@@ -19,3 +27,21 @@ class Card():
     
     def __repr__(self) -> str:
         return f"Card(card_id={self.card_id}, name='{self.name}', type='{self.type}')"
+    
+    def get_possible_actions(
+        self,
+        gamestate: GameState,
+        player: Player,
+        location: str
+    ) -> list[Action]:
+        """Returns a list of possible actions for this card.
+
+        Args:
+            gamestate (GameState): The current game state.
+            player (Player): The player considering the actions.
+            location (str): The location of the card.
+
+        Returns:
+            list[Action]: A list of possible actions for this card.
+        """
+        raise NotImplementedError("This method should be implemented by subclasses.")

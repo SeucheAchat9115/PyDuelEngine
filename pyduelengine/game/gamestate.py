@@ -1,4 +1,5 @@
 from __future__ import annotations
+import random
 from typing import TYPE_CHECKING
 from pyduelengine.phase.phases import GamePhase
 from pyduelengine.player.playerstate import PlayerState
@@ -116,3 +117,25 @@ class GameState:
             raise ValueError(f"Player with name {player_name} not found in game state.")
 
         return getattr(player_state, location)
+    
+    def summon_monster(self, player: Player, card: Card, orientation: str) -> None:
+        """Summons a monster card to the field for the specified player.
+
+        Args:
+            player (Player): The player summoning the card.
+            card (Card): The monster card to be summoned.
+            orientation (str): The orientation of the summoned card ("attack" or "defense").
+        """
+        if orientation not in ["attack", "defense", "set"]:
+            raise ValueError(f"Invalid orientation: {orientation}")
+
+        player_state = self.get_player_state(player)
+        if card in player_state.hand:
+            player_state.hand.remove(card)
+            
+            empty_zones = [i for i, zone in enumerate(player_state.main_monster_zones) if zone is None]
+            if not empty_zones:
+                raise ValueError("No empty monster zones available for summoning.")
+
+            random_position = random.choice(empty_zones)
+            player_state.main_monster_zones[random_position] = (card, orientation)

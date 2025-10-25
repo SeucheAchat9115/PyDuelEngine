@@ -1,5 +1,6 @@
 from pyduelengine.deck.deck import load_deck_from_file
 import random
+from pyduelengine.cards.card import Card
 
 class PlayerState():
     """
@@ -52,6 +53,16 @@ class PlayerState():
                 self.hand.append(drawn_card)
 
         self.must_draw = False # No draw required at game start
+
+    def get_cards_in_location(self, location: str) -> list[Card]:
+        """Returns the list of cards in the specified location.
+
+        Args:
+            location (str): The location to retrieve cards from.
+        Returns:
+            list[Card]: The list of cards in the specified location.
+        """
+        return [card for card in getattr(self, location, []) if isinstance(card, Card)]
 
     def __str__(self) -> str:
         return (

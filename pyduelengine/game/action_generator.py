@@ -15,7 +15,12 @@ class ActionGenerator:
         self,
         gamestate: GameState,
     ):
-        pass
+        """Initializes the ActionGenerator with the current GameState.
+
+        Args:
+            gamestate (GameState): The current game state.
+        """
+        self.gamestate = gamestate
     
     def get_legal_actions(
         self, 
@@ -23,6 +28,29 @@ class ActionGenerator:
     ) -> list[Action]:
         """Generates a list of legal actions for the given player."""
         legal_actions = []
+
+        locations_to_check = [
+            "hand",
+            "monster_zones",
+            "spell_trap_zones",
+            "field_zone",
+            "graveyard",
+            "banished",
+        ]
+
+        current_player_state = self.gamestate.get_player_state(player)
+
+        for location in locations_to_check:
+            location_cards = current_player_state.get_cards_in_location(location)
+
+            for card in location_cards:
+                possible_actions = card.get_possible_actions(
+                    gamestate=self.gamestate,
+                    player=player,
+                    location=location
+                )
+                legal_actions.extend(possible_actions)
+
         # Always add the option to progress to the next phase
         legal_actions.append(ProgressPhaseAction(owner=player))
         return legal_actions
