@@ -34,6 +34,8 @@ class PlayerState():
         self.extra_monster_zones: list[str | None] = [None, None]
         self.field_spell_zone: list[str | None] = None
 
+        self.must_draw: bool = False
+
         self.init_player_state()
 
     def init_player_state(self) -> None:
@@ -48,6 +50,8 @@ class PlayerState():
             if self.deck:
                 drawn_card = self.deck.pop(0)
                 self.hand.append(drawn_card)
+
+        self.must_draw = False # No draw required at game start
 
     def __str__(self) -> str:
         return (

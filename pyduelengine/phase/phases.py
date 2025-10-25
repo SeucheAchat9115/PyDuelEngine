@@ -7,12 +7,3 @@ class GamePhase(Enum):
     BATTLE = 4
     MAIN2 = 5
     END = 6
-
-PHASE_ORDER = [
-    GamePhase.DRAW,
-    GamePhase.STANDBY,
-    GamePhase.MAIN1,    
-    GamePhase.BATTLE,
-    GamePhase.MAIN2,    
-    GamePhase.END
-]

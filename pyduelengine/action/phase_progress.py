@@ -1,11 +1,7 @@
+from pyduelengine.action.action import Action
 
-
-class Action():
-    """Base class for all actions in the game."""
-    def __init__(self) -> None:
-        """Initializes an Action object.
-        """
-        pass
+class ProgressPhaseAction(Action):
+    """Action to progress to the next phase of the game."""
     def execute(
         self,
         gamestate,
@@ -15,7 +11,7 @@ class Action():
         summon_manager,
         phase_manager
     ) -> None:
-        """Executes the action, modifying the game state as necessary.
+        """Executes the action to progress to the next phase.
         
         Args:
             gamestate (GameState): The current game state.
@@ -25,4 +21,4 @@ class Action():
             summon_manager (SummonManager): The summon manager for handling summons.
             phase_manager (PhaseManager): The phase manager for handling phases.
         """
-        raise NotImplementedError("Execute method must be implemented by subclasses.")
+        phase_manager.progress_phase()

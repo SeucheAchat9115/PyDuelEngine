@@ -3,7 +3,10 @@ from pyduelengine.player.player import Player
 from pyduelengine.phase.phase_manager import PhaseManager
 from pyduelengine.game.chain_manager import ChainManager
 from pyduelengine.game.battle_manager import BattleManager
+from pyduelengine.game.summon_manager import SummonManager
 from pyduelengine.game.action_handler import ActionHandler
+from pyduelengine.game.action_generator import ActionGenerator
+from pyduelengine.phase.phases import GamePhase
 
 class Game():
     """Main class representing the game."""
@@ -23,66 +26,81 @@ class Game():
             player_2_deck_list (str): The deck list of player 2.
         """
 
-        # Initialize Players who can take actions
-        self.player_1 = Player(name=player_1_name)
-        self.player_2 = Player(name=player_2_name)
-        self.current_player = self.player_1
-        self.non_current_player = self.player_2
+        player_1 = Player(name=player_1_name)
+        player_2 = Player(name=player_2_name)
 
-        # Initialize GameState to track the state of the game
         self.gamestate = GameState(
-            player_1_name=player_1_name,
+            player_1=player_1,
+            player_2=player_2,
             player_1_deck_list=player_1_deck_list,
-            player_2_name=player_2_name,
             player_2_deck_list=player_2_deck_list
         )
 
-        # Initialize PhaseManager to handle phase transitions
-        self.phase_manager = PhaseManager(game_state=self.gamestate)
-        # Initialize ChainManager to handle chain resolutions
         self.chain_manager = ChainManager()
-        # Initialize BattleManager to handle battles
+        self.summon_manager = SummonManager()
         self.battle_manager = BattleManager()
-        # Initialize ActionHandler to process player actions
-        self.action_handler = ActionHandler()
+
+        self.phase_manager = PhaseManager(gamestate=self.gamestate)
+
+        self.action_handler = ActionHandler(
+            gamestate=self.gamestate,
+            chain_manager=self.chain_manager,
+            battle_manager=self.battle_manager,
+            summon_manager=self.summon_manager,
+            phase_manager=self.phase_manager
+        )
+        self.action_generator = ActionGenerator(
+            gamestate=self.gamestate,
+        )
 
     def start(self) -> None:
         """Starts the game."""
 
-        print("Game started!")
-        print(f"Current Phase: {self.gamestate.current_phase.name}")
-        print(f"Current Player: {self.gamestate.current_player}")
-        print(f"Current Turn: {self.gamestate.current_turn}")
+        self.gamestate.current_player = self.gamestate.player_1
 
-        while not self.check_win_condition():
-            self.execute_phase()
-            self.phase_manager.advance_phase()
+        while self._check_win_conditions() is None:
+            player = self._get_current_player()
 
-    def check_win_condition(self) -> bool:
-        """Checks if a win condition has been met.
+            self.phase_manager.start_turn()
+
+            # Check for Deck Out win after the draw
+            if self._check_win_conditions():
+                break
+
+            # Execute phases until END phase
+            while self.gamestate.current_phase != GamePhase.END:
+                if self._check_win_conditions():
+                    break
+                legal_actions = self.action_generator.get_legal_actions(player)
+                chosen_action = player.agent.get_action(self.gamestate, legal_actions)
+                self.action_handler.process_action(player, chosen_action)
+            
+            if self._check_win_conditions():
+                break
+
+            self.phase_manager.end_turn()
+
+        winner = self._check_win_conditions()
+        print(f"Game Over! The winner is {winner.name}.")
+
+    def _get_current_player(self) -> Player:
+        """Helper to get the active Player object."""
+        return self.gamestate.current_player
+
+    def _check_win_conditions(self) -> Player | None:
+        """Checks if a player has won."""
+        p1_state = self.gamestate.get_player_state(self.gamestate.player_1)
+        p2_state = self.gamestate.get_player_state(self.gamestate.player_2)
+
+        if p1_state.life_points <= 0:
+            return self.gamestate.player_2  # Player 2 wins
+        if p2_state.life_points <= 0:
+            return self.gamestate.player_1  # Player 1 wins
         
-        Returns:
-            bool: True if the game has been won, False otherwise.
-        """
-        # Placeholder for win condition logic
-        return False
-    
-    def execute_phase(self) -> None:
-        """Executes the logic for the current phase."""
-        print(f"Executing {self.gamestate.current_phase.name} phase for {self.gamestate.current_player}.")
-        
-        # Turn player and non-turn player actions
-        while self.one_players_has_actions():
-            self.current_player.apply_actions(self.gamestate)
-            self.non_current_player.apply_actions(self.gamestate)
+        if len(p1_state.deck) == 0 and p1_state.must_draw:
+            return self.gamestate.player_2  # Player 2 wins by Deck Out
+        if len(p2_state.deck) == 0 and p2_state.must_draw:
+            return self.gamestate.player_1  # Player 1 wins by Deck Out
 
-    def one_players_has_actions(self) -> bool:
-        """Placeholder function to determine if either player has actions left.
-        
-        Returns:
-            bool: True if either player has actions left, False otherwise.
-        """
-
-        current_player_has_actions = self.current_player.has_actions(self.gamestate)
-        non_current_player_has_actions = self.non_current_player.has_actions(self.gamestate)
-        return current_player_has_actions or non_current_player_has_actions
+        # ... add other win conditions (Exodia, etc.)
+        return None

@@ -1,3 +1,4 @@
+from __future__ import annotations
 from typing import TYPE_CHECKING
 from pyduelengine.phase.phases import GamePhase
 
@@ -5,27 +6,45 @@ if TYPE_CHECKING:
     from pyduelengine.game.gamestate import GameState
 
 class PhaseManager:
-    def __init__(
-        self, 
-        game_state: "GameState"
-    ):
+    def __init__(self, gamestate: GameState):
         """Initializes the PhaseManager with the current GameState.
+        
         Args:
-            game_state (GameState): The current state of the game.
+            gamestate (GameState): The current state of the game.
         """
-        self.game_state = game_state
+        self.gamestate = gamestate
 
-    def advance_phase(self) -> None:
-        """Advances the game to the next phase."""
+    def start_turn(self) -> None:
+        """Starts a new turn by setting the phase to DRAW."""
+        print(f"Starting turn {self.gamestate.turn_count} for {self.gamestate.current_player.name}")
+        self.gamestate.current_phase = GamePhase.DRAW
 
-        print(f"Advancing from phase: {self.game_state.current_phase.name}")
-        if self.game_state.current_phase == GamePhase.END:
-            self.game_state.current_phase = GamePhase.DRAW
-            self.game_state.current_turn += 1
-            if self.game_state.current_player == self.game_state.player_2_state.name:
-                self.game_state.current_player = self.game_state.player_1_state.name
-            else:
-                self.game_state.current_player = self.game_state.player_2_state.name
+    def progress_phase(self) -> None:
+        """Progresses the game to the next phase."""
+        current_phase = self.gamestate.current_phase
+        if current_phase == GamePhase.DRAW:
+            print(f"Progressing from {current_phase} to {GamePhase.STANDBY}")
+            self.gamestate.current_phase = GamePhase.STANDBY
+        elif current_phase == GamePhase.STANDBY:
+            print(f"Progressing from {current_phase} to {GamePhase.MAIN1}")
+            self.gamestate.current_phase = GamePhase.MAIN1
+        elif current_phase == GamePhase.MAIN1:
+            print(f"Progressing from {current_phase} to {GamePhase.BATTLE}")
+            self.gamestate.current_phase = GamePhase.BATTLE
+        elif current_phase == GamePhase.BATTLE:
+            print(f"Progressing from {current_phase} to {GamePhase.MAIN2}")
+            self.gamestate.current_phase = GamePhase.MAIN2
+        elif current_phase == GamePhase.MAIN2:
+            print(f"Progressing from {current_phase} to {GamePhase.END}")
+            self.gamestate.current_phase = GamePhase.END
+        elif current_phase == GamePhase.END:
+            self.end_turn()
+
+    def end_turn(self) -> None:
+        """Ends the current turn and switches to the next player."""
+        print(f"Ending turn {self.gamestate.turn_count} for {self.gamestate.current_player.name}")
+        if self.gamestate.current_player == self.gamestate.player_1:
+            self.gamestate.current_player = self.gamestate.player_2
         else:
-            self.game_state.current_phase = GamePhase(self.game_state.current_phase.value + 1)
-        print(f"New phase: {self.game_state.current_phase.name}")
+            self.gamestate.current_player = self.gamestate.player_1
+        self.gamestate.turn_count += 1
