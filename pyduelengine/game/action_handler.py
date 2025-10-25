@@ -42,12 +42,4 @@ class ActionHandler:
         action: Action
     ) -> None:
         """Processes the given action for the player."""
-        if isinstance(action, Action):
-            action.execute(
-                self.gamestate, 
-                player, 
-                self.chain_manager,
-                self.battle_manager, 
-                self.summon_manager,
-                self.phase_manager
-            )
+        self.chain_manager.start_chain(player, action, 0)

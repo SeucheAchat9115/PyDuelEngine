@@ -61,6 +61,21 @@ class GameState:
             return self.player_2_state
         else:
             raise ValueError("Player not found in game state.")
+        
+    def get_opponent(self, player: Player) -> Player:
+        """Returns the opponent Player of the given Player.
+
+        Args:
+            player (Player): The player whose opponent to retrieve.
+        Returns:
+            Player: The opponent of the specified player.
+        """
+        if player == self.player_1:
+            return self.player_2
+        elif player == self.player_2:
+            return self.player_1
+        else:
+            raise ValueError("Player not found in game state.")
 
     def switch_current_player(self) -> None:
         """Switches the current player to the other player."""

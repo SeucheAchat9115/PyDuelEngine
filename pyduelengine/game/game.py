@@ -36,7 +36,7 @@ class Game():
             player_2_deck_list=player_2_deck_list
         )
 
-        self.chain_manager = ChainManager()
+        self.chain_manager = ChainManager(gamestate=self.gamestate)
         self.summon_manager = SummonManager()
         self.battle_manager = BattleManager()
 
