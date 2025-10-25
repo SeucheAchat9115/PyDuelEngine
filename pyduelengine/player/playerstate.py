@@ -36,6 +36,7 @@ class PlayerState():
         self.field_spell_zone: list[str | None] = None
 
         self.must_draw: bool = False
+        self.has_normal_summoned_this_turn: bool = False
 
         self.init_player_state()
 

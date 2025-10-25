@@ -40,7 +40,6 @@ class Game():
             gamestate=self.gamestate,
         )
 
-        self.summon_manager = SummonManager()
         self.battle_manager = BattleManager()
         self.phase_manager = PhaseManager(gamestate=self.gamestate)
 
@@ -48,6 +47,12 @@ class Game():
             gamestate=self.gamestate,
             action_generator=self.action_generator,
             phase_manager=self.phase_manager
+        )
+
+        self.summon_manager = SummonManager(
+            game_state=self.gamestate, 
+            chain_manager=self.chain_manager,
+            action_generator=self.action_generator
         )
 
         self.action_handler = ActionHandler(

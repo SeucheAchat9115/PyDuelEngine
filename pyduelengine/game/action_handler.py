@@ -8,7 +8,11 @@ if TYPE_CHECKING:
     from pyduelengine.game.summon_manager import SummonManager
     from pyduelengine.phase.phase_manager import PhaseManager
     from pyduelengine.player.player import Player
+from pyduelengine.action.phase_progress import ProgressPhaseAction
+from pyduelengine.action.declare_attack import DeclareAttackAction
+from pyduelengine.action.normal_summon import NormalSummonAction
 
+from pyduelengine.action.activate_effect import ActivateEffectAction
 from pyduelengine.action.action import Action
 
 class ActionHandler:
@@ -42,4 +46,14 @@ class ActionHandler:
         action: Action
     ) -> None:
         """Processes the given action for the player."""
-        self.chain_manager.start_chain(player, action)
+
+        if isinstance(action, ActivateEffectAction):
+            self.chain_manager.start_chain(player, action)
+        elif isinstance(action, NormalSummonAction):
+            self.summon_manager.handle_summon(player, action)
+        elif isinstance(action, DeclareAttackAction):
+            self.battle_manager.declare_attack(player, action)
+        elif isinstance(action, ProgressPhaseAction):
+            self.phase_manager.progress_phase()
+        else:
+            raise ValueError("Unknown action type.")
